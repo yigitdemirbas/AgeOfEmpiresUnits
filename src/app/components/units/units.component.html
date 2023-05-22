@@ -72,7 +72,7 @@
             <td>{{ unit.id }}</td>
             <td>{{ unit.name }}</td>
             <td>{{ unit.age }}</td>
-            <td>{{ getCosts(unit.cost) }}</td>
+            <td *ngIf="unit.cost">{{ getCosts(unit.cost) }}</td>
           </tr>
         </tbody>
       </table>
