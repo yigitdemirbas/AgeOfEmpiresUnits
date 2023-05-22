@@ -1,0 +1,10 @@
+.cost-table {
+  td:nth-child(1) {
+    width: 4%;
+    white-space: nowrap;
+  }
+  td:last-child {
+    width: 100px;
+    white-space: nowrap;
+  }
+}

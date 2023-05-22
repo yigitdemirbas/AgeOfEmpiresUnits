@@ -1,0 +1,81 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center">Units Page</h1>
+    </div>
+    <div class="col-12">
+      <h3>Ages</h3>
+    </div>
+    <div class="col-12">
+      <div class="btn-group mb-3" role="group" aria-label="Basic example">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          [ngClass]="{ active: age === selectedAge }"
+          *ngFor="let age of ages"
+          (click)="selectAge(age)"
+        >
+          {{ age }}
+        </button>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <h3>Costs</h3>
+    </div>
+    <div class="col-12">
+      <table class="cost-table w-100">
+        <tr *ngFor="let cost of costs">
+          <td>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              (change)="onCheckboxChange(cost)"
+              [id]="cost"
+            />
+          </td>
+          <td>
+            <label class="form-check-label" [for]="cost">
+              {{ cost }}
+            </label>
+          </td>
+          <td>
+            <input
+              type="range"
+              class="form-range"
+              min="0"
+              max="200"
+              [value]="getCostValue(cost)"
+              (change)="onRangeChange($event, cost)"
+              [disabled]="isRangeDisabled(cost)"
+              [id]="cost"
+            />
+          </td>
+          <td class="ps-3">{{ getCostValue(cost) }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let unit of filteredUnits" (click)="onDetailClick(unit)">
+            <td>{{ unit.id }}</td>
+            <td>{{ unit.name }}</td>
+            <td>{{ unit.age }}</td>
+            <td>{{ getCosts(unit.cost) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
